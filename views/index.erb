@@ -1,0 +1,31 @@
+<h1>Spell It Out</h1>
+<p>This is a magical web page which can spell out numbers (ooooooh....). Please type in a whole number (integer) between 1 and 1 trillion, to see this magic trick of spelling it out in words!</p>
+<p>
+<hr width='400'>
+<p>
+<form action='/' method='get'>
+	<label for='numtosee'>Enter a number from 1 to 1 trillion:</label>
+	<input type='text' name='numtosee' id='numtosee' size='30'>
+	<input type='submit'>
+</form>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+
+<center>
+<p class="red">
+<% unless params[:numtosee] == nil %>
+	<% if params[:numtosee].to_i < 1 || params[:numtosee].to_i >= 1000000000000 %>
+		<%= "Please enter a number between 1 and 1 trillion." %>
+	<% else %>
+		<% input = params[:numtosee].to_i %>
+	<% end %>
+	
+	<%= "Your number is: #{ input.send('in_words').upcase! }." %>
+<% end %>
+</p>
+</center>
+<p>&nbsp;</p>
+
+<p>
+	<a href="/">Index</a>
+</p>
